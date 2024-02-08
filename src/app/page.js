@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Select from "react-select";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 import axios from "axios";
 
 const options = [
@@ -24,14 +25,7 @@ export default function Home() {
   const [calegs, setCalegs] = useState([]);
   const [isData, setData] = useState(false);
   const [searchValue, setSearchValue] = useState("3101");
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const dataCaleg = await getCaleg();
-  //     setCalegs(dataCaleg.data);
-  //     setData(true);
-  //   };
-  //   getData();
-  // }, []);
+  const router = useRouter();
 
   const getCaleg = async () => {
     try {
@@ -86,13 +80,15 @@ export default function Home() {
           <div className="flex flex-wrap -mx-1 mt-20 lg:-mx-4">
             {calegs.map((caleg, idx) => (
               <div
-                className="my-5 px-5 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3"
+                className="my-5 px-5 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/2"
                 key={idx}
               >
                 <article className="overflow-hidden rounded-lg shadow-lg p-3">
                   <header className="flex items-center justify-start gap-4 leading-tight p-2 md:p-4">
                     <div className="w-1/4">
-                      <img
+                      <Image
+                        width={100}
+                        height={100}
                         alt="Placeholder"
                         className="block object-cover"
                         src={caleg.pasFoto}
@@ -145,63 +141,14 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="items-center justify-between leading-tight p-2 md:p-4">
-                    <p className="text-sm">
-                      Pekerjaan:{" "}
-                      {caleg.pekerjaan === "" || caleg.pekerjaan === null
-                        ? "Tidak Ada Data"
-                        : caleg.pekerjaan}
-                    </p>
-
-                    <p className="text-sm">
-                      Riwayat Pekerjaan:
-                      {caleg.riwayatPekerjaan === "" ||
-                      caleg.riwayatPekerjaan === null
-                        ? "Tidak Ada Data"
-                        : caleg.riwayatPekerjaan.map((resume, idx) => (
-                            <ul
-                              key={idx}
-                              className="list-disc px-2 py-1/2 md:px-4"
-                            >
-                              <li>
-                                <b>{resume.namaPerusahaanLembaga}</b> -{" "}
-                                {resume.jabatan} ({resume.tahunMasuk} -{" "}
-                                {resume.tahunMasuk})
-                              </li>
-                            </ul>
-                          ))}
-                    </p>
-                  </div>
-
-                  <div className="items-center justify-between leading-tight p-2 md:p-4">
-                    <p className="text-sm">
-                      Program Usulan:{" "}
-                      {caleg.programUsulan === "" ||
-                      caleg.programUsulan === null
-                        ? "Tidak Ada Data"
-                        : caleg.programUsulan
-                            .slice(0, 3)
-                            .map((program, idx) => (
-                              <ul
-                                className="list-disc px-2 py-1/2 md:px-4"
-                                key={idx}
-                              >
-                                <li>
-                                  <b>{program.replace(/\n/, " ")}</b>
-                                </li>
-                              </ul>
-                            ))}
-                    </p>
-                  </div>
-
                   <footer className="flex items-center justify-between leading-none p-2 md:p-4">
                     {/* <a
                       className="flex items-center no-underline hover:underline text-black"
                       href="#"
                     > */}
                     <button
-                      className="px-8 py-3 text-white bg-gray-300 rounded focus:outline-none"
-                      disabled
+                      onClick={() => router.push(`/detail/${caleg.id}`)}
+                      className="text-white w-auto mt-4 bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
                       Lihat Profil Lengkap
                     </button>
@@ -216,7 +163,14 @@ export default function Home() {
       </div>
 
       <p className="fixed bottom-0 left-0 right-0 block border-t border-t-muted bg-white p-5 text-right text-sm text-muted-foreground print:hidden">
-        &copy; 2024 - <a className="underline" href="https://brendatama.vercel.app" target="_blank">Brendatama Akbar</a>
+        &copy; 2024 -{" "}
+        <a
+          className="underline"
+          href="https://brendatama.vercel.app"
+          target="_blank"
+        >
+          Brendatama Akbar
+        </a>
       </p>
     </main>
   );
