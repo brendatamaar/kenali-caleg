@@ -48,7 +48,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-2">
+    <main className="flex min-h-screen flex-col items-center justify-between p-2 bg-gray-100">
       <div className="container my-12 mx-auto px-4 md:px-12">
         <div className="relative h-10 min-w-[200px]">
           <select
@@ -80,10 +80,10 @@ export default function Home() {
           <div className="flex flex-wrap -mx-1 mt-20 lg:-mx-4">
             {calegs.map((caleg, idx) => (
               <div
-                className="my-5 px-5 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/2"
+                className="my-5 px-3 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/2"
                 key={idx}
               >
-                <article className="overflow-hidden rounded-lg shadow-lg p-3">
+                <article className="overflow-hidden rounded-lg shadow-lg p-3 bg-white">
                   <header className="flex items-center justify-start gap-4 leading-tight p-2 md:p-4">
                     <div className="w-1/4">
                       <Image

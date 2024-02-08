@@ -36,7 +36,10 @@ function Page({ params }) {
         <div className="flex flex-wrap -mx-1 lg:-mx-4">
           <div className="my-5 w-full bg-white">
             {calegs.map((caleg, idx) => (
-              <article className="overflow-hidden rounded-lg shadow-lg p-3" key={idx}>
+              <article
+                className="overflow-hidden rounded-lg shadow-lg p-3"
+                key={idx}
+              >
                 <header className="flex items-center justify-start gap-4 leading-tight p-2 md:p-4">
                   <div className="w-1/6">
                     <Image
@@ -103,25 +106,6 @@ function Page({ params }) {
                   </p>
 
                   <p className="text-sm">
-                    Riwayat Pendidikan:{" "}
-                    {caleg.riwayatPendidikan === "" ||
-                    caleg.riwayatPendidikan === null
-                      ? "Tidak Ada Data"
-                      : caleg.riwayatPendidikan.map((pendidikan, idx) => (
-                          <ul
-                            key={idx}
-                            className="list-disc px-2 py-1/2 md:px-4"
-                          >
-                            <li>
-                              <b>{pendidikan.jenjangPendidikan}</b> -{" "}
-                              {pendidikan.namaInstitusi} (
-                              {pendidikan.tahunMasuk} - {pendidikan.tahunMasuk})
-                            </li>
-                          </ul>
-                        ))}
-                  </p>
-                  <br />
-                  <p className="text-sm">
                     Riwayat Pekerjaan:{" "}
                     {caleg.riwayatPekerjaan === "" ||
                     caleg.riwayatPekerjaan === null
@@ -135,6 +119,25 @@ function Page({ params }) {
                               <b>{resume.namaPerusahaanLembaga}</b> -{" "}
                               {resume.jabatan} ({resume.tahunMasuk} -{" "}
                               {resume.tahunMasuk})
+                            </li>
+                          </ul>
+                        ))}
+                  </p>
+                  <br />
+                  <p className="text-sm">
+                    Riwayat Pendidikan:{" "}
+                    {caleg.riwayatPendidikan === "" ||
+                    caleg.riwayatPendidikan === null
+                      ? "Tidak Ada Data"
+                      : caleg.riwayatPendidikan.map((pendidikan, idx) => (
+                          <ul
+                            key={idx}
+                            className="list-disc px-2 py-1/2 md:px-4"
+                          >
+                            <li>
+                              <b>{pendidikan.jenjangPendidikan}</b> -{" "}
+                              {pendidikan.namaInstitusi} (
+                              {pendidikan.tahunMasuk} - {pendidikan.tahunMasuk})
                             </li>
                           </ul>
                         ))}
@@ -176,9 +179,6 @@ function Page({ params }) {
                           </ul>
                         ))}
                   </p>
-                </div>
-
-                <div className="items-center justify-between leading-tight p-2 md:p-4">
                   <p className="text-sm">
                     Motivasi:{" "}
                     {caleg.motivasi === "" || caleg.motivasi === null
