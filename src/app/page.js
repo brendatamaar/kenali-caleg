@@ -179,13 +179,18 @@ export default function Home() {
                       {caleg.programUsulan === "" ||
                       caleg.programUsulan === null
                         ? "Tidak Ada Data"
-                        : caleg.programUsulan.slice(0, 3).map((program) => (
-                            <ul className="list-disc px-2 py-1/2 md:px-4">
-                              <li>
-                                <b>{program.replace(/\n/, " ")}</b>
-                              </li>
-                            </ul>
-                          ))}
+                        : caleg.programUsulan
+                            .slice(0, 3)
+                            .map((program, idx) => (
+                              <ul
+                                className="list-disc px-2 py-1/2 md:px-4"
+                                key={idx}
+                              >
+                                <li>
+                                  <b>{program.replace(/\n/, " ")}</b>
+                                </li>
+                              </ul>
+                            ))}
                     </p>
                   </div>
 
@@ -209,6 +214,10 @@ export default function Home() {
           <div className="mt-16"> Data kosong. Silahkan pilih dapil anda. </div>
         )}
       </div>
+
+      <p className="fixed bottom-0 left-0 right-0 block border-t border-t-muted bg-white p-5 text-right text-sm text-muted-foreground print:hidden">
+        &copy; 2024 - <a className="underline" href="https://brendatama.vercel.app" target="_blank">Brendatama Akbar</a>
+      </p>
     </main>
   );
 }
