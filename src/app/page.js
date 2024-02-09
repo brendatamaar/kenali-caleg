@@ -80,13 +80,10 @@ export default function Home() {
           <div className="flex flex-wrap -mx-1 mt-20 lg:-mx-4">
             {calegs.map((caleg, idx) => (
               <div
-                className="my-2 px-2 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/2"
+                className="my-2 px-2 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/2 hover:bg-gray-100"
                 key={idx}
               >
-                <a
-                  href="#"
-                  className="flex flex-col items-center bg-white rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-                >
+                <div className="flex flex-col items-center bg-white rounded-lg shadow md:flex-row md:max-w-xl">
                   <Image
                     width={100}
                     height={100}
@@ -94,24 +91,24 @@ export default function Home() {
                     className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
                     src={caleg.pasFoto}
                   />
-                  <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
+                  <div className="w-full max-w-sm p-4 bg-white sm:p-6">
                     <div className="text-sm grid gap-2 font-normal text-gray-500 dark:text-gray-400">
-                      <div className="flex items-center px-1 py-3 text-lg font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                      <div className="flex items-center px-1 py-3 text-md font-bold text-gray-900 rounded-lg bg-gray-100 hover:bg-gray-100 group hover:shadow">
                         <span className="flex-1 ms-3 whitespace-nowrap">
                           {caleg.nama}
                         </span>
                       </div>
-                      <div className="flex items-center px-1 py-3 text-md font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                      <div className="flex items-center px-1 py-3 text-md font-bold text-gray-900 rounded-lg bg-gray-100 hover:bg-gray-100 group hover:shadow">
                         <span className="flex-1 ms-3 whitespace-nowrap">
                           {caleg.namaDapil}
                         </span>
                       </div>
-                      <div className="flex items-center px-1 py-3 text-md font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                      <div className="flex items-center px-1 py-3 text-md font-bold text-gray-900 rounded-lg bg-gray-100 hover:bg-gray-100 group hover:shadow">
                         <span className="flex-1 ms-3 whitespace-nowrap">
                           {caleg.namaPartai}
                         </span>
                       </div>
-                      <div className="flex items-center px-1 py-3 text-md font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                      <div className="flex items-center px-1 py-3 text-md font-bold text-gray-900 rounded-lg bg-gray-100 hover:bg-gray-100 group hover:shadow">
                         <span className="flex-1 ms-3 whitespace-nowrap">
                           Nomor Urut: {caleg.nomorUrut}
                         </span>
@@ -120,9 +117,9 @@ export default function Home() {
                     <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                     <ul className="my-4 space-y-3">
                       <li>
-                        <div className="inline-flex items-center w-full p-3 rounded-lg text-base font-medium border border-gray-500 text-gray-300">
+                        <div className="inline-flex items-center w-full p-3 rounded-lg text-sm font-medium border border-gray-500 text-black">
                           <span className="flex-1 whitespace-nowrap">Usia</span>
-                          <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                          <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
                             {caleg.usia === "" || caleg.usia === null
                               ? "Tidak Menyebutkan"
                               : caleg.usia + " Tahun"}
@@ -130,21 +127,21 @@ export default function Home() {
                         </div>
                       </li>
                       <li>
-                        <div className="inline-flex items-center w-full p-3 rounded-lg text-base font-medium border border-gray-500 text-gray-300">
+                        <div className="inline-flex items-center w-full p-3 rounded-lg text-sm font-medium border border-gray-500 text-black">
                           <span className="flex-1 whitespace-nowrap">
                             Jenis Kelamin
                           </span>
-                          <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                          <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
                             {caleg.jenisKelamin.toUpperCase()}
                           </span>
                         </div>
                       </li>
                       <li>
-                        <div className="inline-flex items-center w-full p-3 rounded-lg text-base font-medium border border-gray-500 text-gray-300">
+                        <div className="inline-flex items-center w-full p-3 rounded-lg text-sm font-medium border border-gray-500 text-black">
                           <span className="flex-1 whitespace-nowrap">
                             Status Hukum
                           </span>
-                          <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                          <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
                             {caleg.statusHukum === "" ||
                             caleg.statusHukum === null
                               ? "Tidak Ada Data"
@@ -153,11 +150,11 @@ export default function Home() {
                         </div>
                       </li>
                       <li>
-                        <div className="inline-flex items-center w-full p-3 rounded-lg text-base font-medium border border-gray-500 text-gray-300">
+                        <div className="inline-flex items-center w-full p-3 rounded-lg text-sm font-medium border border-gray-500 text-black">
                           <span className="flex-1 whitespace-nowrap">
                             Status Disabilitas
                           </span>
-                          <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                          <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
                             {caleg.statusDisabilitas === "" ||
                             caleg.statusDisabilitas === null
                               ? "Tidak Ada Data"
@@ -166,8 +163,14 @@ export default function Home() {
                         </div>
                       </li>
                     </ul>
+                    <button
+                      onClick={() => router.push(`/detail/${caleg.id}`)}
+                      className="text-white w-auto bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Lihat Profil Lengkap
+                    </button>
                   </div>
-                </a>
+                </div>
               </div>
             ))}
           </div>

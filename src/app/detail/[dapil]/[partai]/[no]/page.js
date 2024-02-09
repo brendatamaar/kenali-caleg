@@ -32,188 +32,153 @@ function Page({ params }) {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-gray-50">
-      <div className="container my-5 mx-auto px-4 md:px-12">
-        <div className="flex flex-wrap -mx-1 lg:-mx-4">
-          <div className="my-5 w-full bg-white">
-            {calegs.map((caleg, idx) => (
-              <article
-                className="overflow-hidden rounded-lg shadow-lg p-3"
-                key={idx}
-              >
-                <header className="flex items-center justify-start gap-4 leading-tight p-2 md:p-4">
-                  <div className="w-1/6">
-                    <Image
-                      width={120}
-                      height={120}
-                      alt="Placeholder"
-                      className="block object-cover"
-                      src={caleg.pasFoto}
-                    />
-                  </div>
+      {calegs.map((caleg, idx) => (
+        <div className="max-w-lg mx-4 my-10 w-full">
+          <button
+            onClick={() => router.push(`/`)}
+            className="text-white w-32 mt-4 bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Kembali
+          </button>
+          <div className=" bg-white rounded-lg shadow-md p-5" key={idx}>
+            <Image
+              width={128}
+              height={128}
+              alt="Placeholder"
+              className="rounded-xl mx-auto"
+              src={caleg.pasFoto}
+            />
+            <h2 className="text-center text-2xl font-semibold mt-3">
+              {caleg.nama.toUpperCase()}
+            </h2>
+            <p className="text-center text-gray-600">
+              {" "}
+              {caleg.namaPartai} - No. Urut {caleg.nomorUrut}
+            </p>
+            <div className="flex justify-center mt-5">
+              <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
+                {caleg.usia === "" || caleg.usia === null
+                  ? "Tidak Menyebutkan Usia"
+                  : caleg.usia + " Tahun"}
+              </span>
+              <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
+                {caleg.jenisKelamin.toUpperCase()}
+              </span>
+            </div>
+            <div className="mt-5">
+              <h3 className="text-xl font-semibold">Status Hukum</h3>
+              <p className="text-gray-600 mt-2">
+                {caleg.statusHukum === "" || caleg.statusHukum === null
+                  ? "-"
+                  : caleg.statusHukum}
+              </p>
+            </div>
+            <div className="mt-5">
+              <h3 className="text-xl font-semibold">Status Disabilitas</h3>
+              <p className="text-gray-600 mt-2">
+                {caleg.statusDisabilitas === "" ||
+                caleg.statusDisabilitas === null
+                  ? "-"
+                  : caleg.statusDisabilitas}
+              </p>
+            </div>
+          </div>
 
-                  <div className="w-3/4">
-                    <h1 className="text-lg font-bold">
-                      <a
-                        className="no-underline hover:underline text-black"
-                        href="#"
-                      >
-                        {caleg.nama}
-                      </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                      Dapil: {caleg.namaDapil}
-                    </p>
-                    <p className="text-grey-darker text-sm">
-                      Nama Partai: {caleg.namaPartai}
-                    </p>
-                    <p className="text-grey-darker text-sm">
-                      Nomor Urut: {caleg.nomorUrut}
-                    </p>
-                  </div>
-                </header>
+          <div className=" bg-white rounded-lg shadow-md mt-4 p-5" key={idx}>
+            <h3 className="text-xl font-semibold">Pekerjaan</h3>
+            <p className="text-gray-600 mt-2">
+              {caleg.pekerjaan === "" || caleg.pekerjaan === null
+                ? "Tidak Ada Data"
+                : caleg.pekerjaan}
+            </p>
+          </div>
 
-                <div className="items-center justify-between leading-tight p-2 md:p-4">
-                  <p className="text-sm">
-                    Usia:{" "}
-                    {caleg.usia === "" || caleg.usia === null
-                      ? "Tidak Menyebutkan"
-                      : caleg.usia + " Tahun"}
-                  </p>
-                  <p className="text-sm">
-                    Jenis Kelamin: {caleg.jenisKelamin.toUpperCase()}
-                  </p>
-                  <p className="text-sm">
-                    Status Hukum:{" "}
-                    {caleg.statusHukum === "" || caleg.statusHukum === null
-                      ? "Tidak Ada Data"
-                      : caleg.statusHukum}
-                  </p>
-                  <p className="text-sm">
-                    Status Disabilitas:{" "}
-                    {caleg.statusDisabilitas === "" ||
-                    caleg.statusDisabilitas === null
-                      ? "Tidak Ada Data"
-                      : caleg.statusDisabilitas}
-                  </p>
-                </div>
+          <div className=" bg-white rounded-lg shadow-md mt-4 p-5" key={idx}>
+            <h3 className="text-xl font-semibold">Riwayat Pekerjaan</h3>
+            <p className="text-gray-600 mt-2">
+              {caleg.riwayatPekerjaan === "" || caleg.riwayatPekerjaan === null
+                ? "Tidak Ada Data"
+                : caleg.riwayatPekerjaan.map((resume, idx) => (
+                    <ul key={idx} className="list-disc px-2 py-1/2 md:px-4">
+                      <li>
+                        <b>{resume.namaPerusahaanLembaga}</b> - {resume.jabatan}{" "}
+                        ({resume.tahunMasuk} - {resume.tahunMasuk})
+                      </li>
+                    </ul>
+                  ))}
+            </p>
+          </div>
 
-                <div className="items-center justify-between leading-tight p-2 md:p-4">
-                  <p className="text-sm">
-                    Pekerjaan:{" "}
-                    {caleg.pekerjaan === "" || caleg.pekerjaan === null
-                      ? "Tidak Ada Data"
-                      : caleg.pekerjaan}
-                  </p>
+          <div className=" bg-white rounded-lg shadow-md mt-4 p-5" key={idx}>
+            <h3 className="text-xl font-semibold">Riwayat Pendidikan</h3>
+            <p className="text-gray-600 mt-2">
+              {caleg.riwayatPendidikan === "" ||
+              caleg.riwayatPendidikan === null
+                ? "Tidak Ada Data"
+                : caleg.riwayatPendidikan.map((pendidikan, idx) => (
+                    <ul key={idx} className="list-disc px-2 py-1/2 md:px-4">
+                      <li>
+                        <b>{pendidikan.jenjangPendidikan}</b> -{" "}
+                        {pendidikan.namaInstitusi} ({pendidikan.tahunMasuk} -{" "}
+                        {pendidikan.tahunMasuk})
+                      </li>
+                    </ul>
+                  ))}
+            </p>
+          </div>
 
-                  <p className="text-sm">
-                    Riwayat Pekerjaan:{" "}
-                    {caleg.riwayatPekerjaan === "" ||
-                    caleg.riwayatPekerjaan === null
-                      ? "Tidak Ada Data"
-                      : caleg.riwayatPekerjaan.map((resume, idx) => (
-                          <ul
-                            key={idx}
-                            className="list-disc px-2 py-1/2 md:px-4"
-                          >
-                            <li>
-                              <b>{resume.namaPerusahaanLembaga}</b> -{" "}
-                              {resume.jabatan} ({resume.tahunMasuk} -{" "}
-                              {resume.tahunMasuk})
-                            </li>
-                          </ul>
-                        ))}
-                  </p>
-                  <br />
-                  <p className="text-sm">
-                    Riwayat Pendidikan:{" "}
-                    {caleg.riwayatPendidikan === "" ||
-                    caleg.riwayatPendidikan === null
-                      ? "Tidak Ada Data"
-                      : caleg.riwayatPendidikan.map((pendidikan, idx) => (
-                          <ul
-                            key={idx}
-                            className="list-disc px-2 py-1/2 md:px-4"
-                          >
-                            <li>
-                              <b>{pendidikan.jenjangPendidikan}</b> -{" "}
-                              {pendidikan.namaInstitusi} (
-                              {pendidikan.tahunMasuk} - {pendidikan.tahunMasuk})
-                            </li>
-                          </ul>
-                        ))}
-                  </p>
-                  <br />
-                  <p className="text-sm">
-                    Riwayat Organisasi:{" "}
-                    {caleg.riwayatOrganisasi === "" ||
-                    caleg.riwayatOrganisasi === null
-                      ? "Tidak Ada Data"
-                      : caleg.riwayatOrganisasi.map((organisasi, idx) => (
-                          <ul
-                            key={idx}
-                            className="list-disc px-2 py-1/2 md:px-4"
-                          >
-                            <li>
-                              <b>{organisasi.namaOrganisasi}</b> -{" "}
-                              {organisasi.jabatan} ({organisasi.tahunMasuk} -{" "}
-                              {organisasi.tahunMasuk})
-                            </li>
-                          </ul>
-                        ))}
-                  </p>
-                </div>
+          <div className=" bg-white rounded-lg shadow-md mt-4 p-5" key={idx}>
+            <h3 className="text-xl font-semibold">Riwayat Organisasi</h3>
+            <p className="text-gray-600 mt-2">
+              {caleg.riwayatOrganisasi === "" ||
+              caleg.riwayatOrganisasi === null
+                ? "Tidak Ada Data"
+                : caleg.riwayatOrganisasi.map((organisasi, idx) => (
+                    <ul key={idx} className="list-disc px-2 py-1/2 md:px-4">
+                      <li>
+                        <b>{organisasi.namaOrganisasi}</b> -{" "}
+                        {organisasi.jabatan} ({organisasi.tahunMasuk} -{" "}
+                        {organisasi.tahunMasuk})
+                      </li>
+                    </ul>
+                  ))}
+            </p>
+          </div>
 
-                <div className="items-center justify-between leading-tight p-2 md:p-4">
-                  <p className="text-sm">
-                    Program Usulan:{" "}
-                    {caleg.programUsulan === "" || caleg.programUsulan === null
-                      ? "Tidak Ada Data"
-                      : caleg.programUsulan.slice(0, 3).map((program, idx) => (
-                          <ul
-                            className="list-disc px-2 py-1/2 md:px-4"
-                            key={idx}
-                          >
-                            <li>
-                              <b>{program}</b>
-                            </li>
-                          </ul>
-                        ))}
-                  </p>
-                  <p className="text-sm">
-                    Motivasi:{" "}
-                    {caleg.motivasi === "" || caleg.motivasi === null
-                      ? "Tidak Ada Data"
-                      : caleg.motivasi.slice(0, 3).map((motivasi, idx) => (
-                          <ul
-                            className="list-disc px-2 py-1/2 md:px-4"
-                            key={idx}
-                          >
-                            <li>
-                              <b>{motivasi}</b>
-                            </li>
-                          </ul>
-                        ))}
-                  </p>
-                </div>
+          <div className=" bg-white rounded-lg shadow-md mt-4 p-5" key={idx}>
+            <h3 className="text-xl font-semibold">Program Usulan</h3>
+            <p className="text-gray-600 mt-2">
+              {caleg.programUsulan === "" || caleg.programUsulan === null
+                ? "Tidak Ada Data"
+                : caleg.programUsulan.slice(0, 3).map((program, idx) => (
+                    <ul className="list-disc px-2 py-1/2 md:px-4" key={idx}>
+                      <li>
+                        <b>{program}</b>
+                      </li>
+                    </ul>
+                  ))}
+            </p>
+          </div>
 
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                  {/* <a
-                      className="flex items-center no-underline hover:underline text-black"
-                      href="#"
-                    > */}
-                  <button
-                    onClick={() => router.push(`/`)}
-                    className="text-white w-32 mt-4 bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    Kembali
-                  </button>
-                </footer>
-              </article>
-            ))}
+          <div
+            className=" bg-white rounded-lg shadow-md mt-4 mb-12 p-5"
+            key={idx}
+          >
+            <h3 className="text-xl font-semibold">Motivasi</h3>
+            <p className="text-gray-600 mt-2">
+              {caleg.motivasi === "" || caleg.motivasi === null
+                ? "Tidak Ada Data"
+                : caleg.motivasi.slice(0, 3).map((motivasi, idx) => (
+                    <ul className="list-disc px-2 py-1/2 md:px-4" key={idx}>
+                      <li>
+                        <b>{motivasi}</b>
+                      </li>
+                    </ul>
+                  ))}
+            </p>
           </div>
         </div>
-      </div>
-
+      ))}
       <p className="fixed bottom-0 left-0 right-0 block border-t border-t-muted bg-white p-5 text-right text-sm text-muted-foreground print:hidden">
         &copy; 2024 -{" "}
         <a
