@@ -80,85 +80,99 @@ export default function Home() {
           <div className="flex flex-wrap -mx-1 mt-20 lg:-mx-4">
             {calegs.map((caleg, idx) => (
               <div
-                className="my-5 px-3 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/2"
+                className="my-2 px-2 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/2"
                 key={idx}
               >
-                <article className="overflow-hidden rounded-lg shadow-lg p-3 bg-white">
-                  <header className="flex items-center justify-start gap-4 leading-tight p-2 md:p-4">
-                    <div className="w-1/4">
-                      <Image
-                        width={100}
-                        height={100}
-                        alt="Placeholder"
-                        className="block object-cover"
-                        src={caleg.pasFoto}
-                      />
-                    </div>
-
-                    <div className="w-3/4">
-                      <h1 className="text-lg font-bold">
-                        <a
-                          className="no-underline hover:underline text-black"
-                          href="#"
-                        >
+                <a
+                  href="#"
+                  className="flex flex-col items-center bg-white rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                >
+                  <Image
+                    width={100}
+                    height={100}
+                    alt="Placeholder"
+                    className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+                    src={caleg.pasFoto}
+                  />
+                  <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
+                    <div className="text-sm grid gap-2 font-normal text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center px-1 py-3 text-lg font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                        <span className="flex-1 ms-3 whitespace-nowrap">
                           {caleg.nama}
-                        </a>
-                      </h1>
-                      <p className="text-grey-darker text-sm">
-                        Dapil: {caleg.namaDapil}
-                      </p>
-                      <p className="text-grey-darker text-sm">
-                        Nama Partai: {caleg.namaPartai}
-                      </p>
-                      <p className="text-grey-darker text-sm">
-                        Nomor Urut: {caleg.nomorUrut}
-                      </p>
+                        </span>
+                      </div>
+                      <div className="flex items-center px-1 py-3 text-md font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                        <span className="flex-1 ms-3 whitespace-nowrap">
+                          {caleg.namaDapil}
+                        </span>
+                      </div>
+                      <div className="flex items-center px-1 py-3 text-md font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                        <span className="flex-1 ms-3 whitespace-nowrap">
+                          {caleg.namaPartai}
+                        </span>
+                      </div>
+                      <div className="flex items-center px-1 py-3 text-md font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                        <span className="flex-1 ms-3 whitespace-nowrap">
+                          Nomor Urut: {caleg.nomorUrut}
+                        </span>
+                      </div>
                     </div>
-                  </header>
-
-                  <div className="items-center justify-between leading-tight p-2 md:p-4">
-                    <p className="text-sm">
-                      Usia:{" "}
-                      {caleg.usia === "" || caleg.usia === null
-                        ? "Tidak Menyebutkan"
-                        : caleg.usia + " Tahun"}
-                    </p>
-                    <p className="text-sm">
-                      Jenis Kelamin: {caleg.jenisKelamin.toUpperCase()}
-                    </p>
-                    <p className="text-sm">
-                      Status Hukum:{" "}
-                      {caleg.statusHukum === "" || caleg.statusHukum === null
-                        ? "Tidak Ada Data"
-                        : caleg.statusHukum}
-                    </p>
-                    <p className="text-sm">
-                      Status Disabilitas:{" "}
-                      {caleg.statusDisabilitas === "" ||
-                      caleg.statusDisabilitas === null
-                        ? "Tidak Ada Data"
-                        : caleg.statusDisabilitas}
-                    </p>
+                    <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+                    <ul className="my-4 space-y-3">
+                      <li>
+                        <div className="inline-flex items-center w-full p-3 rounded-lg text-base font-medium border border-gray-500 text-gray-300">
+                          <span className="flex-1 whitespace-nowrap">Usia</span>
+                          <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                            {caleg.usia === "" || caleg.usia === null
+                              ? "Tidak Menyebutkan"
+                              : caleg.usia + " Tahun"}
+                          </span>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="inline-flex items-center w-full p-3 rounded-lg text-base font-medium border border-gray-500 text-gray-300">
+                          <span className="flex-1 whitespace-nowrap">
+                            Jenis Kelamin
+                          </span>
+                          <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                            {caleg.jenisKelamin.toUpperCase()}
+                          </span>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="inline-flex items-center w-full p-3 rounded-lg text-base font-medium border border-gray-500 text-gray-300">
+                          <span className="flex-1 whitespace-nowrap">
+                            Status Hukum
+                          </span>
+                          <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                            {caleg.statusHukum === "" ||
+                            caleg.statusHukum === null
+                              ? "Tidak Ada Data"
+                              : caleg.statusHukum}
+                          </span>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="inline-flex items-center w-full p-3 rounded-lg text-base font-medium border border-gray-500 text-gray-300">
+                          <span className="flex-1 whitespace-nowrap">
+                            Status Disabilitas
+                          </span>
+                          <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                            {caleg.statusDisabilitas === "" ||
+                            caleg.statusDisabilitas === null
+                              ? "Tidak Ada Data"
+                              : caleg.statusDisabilitas}
+                          </span>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
-
-                  <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    {/* <a
-                      className="flex items-center no-underline hover:underline text-black"
-                      href="#"
-                    > */}
-                    <button
-                      onClick={() => router.push(`/detail/${caleg.id}`)}
-                      className="text-white w-auto mt-4 bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                      Lihat Profil Lengkap
-                    </button>
-                  </footer>
-                </article>
+                </a>
               </div>
             ))}
           </div>
         ) : (
-          <div className="mt-16"> Data kosong. Silahkan pilih dapil anda. </div>
+          <div className="mt-16">Data kosong. Silahkan pilih dapil anda.</div>
         )}
       </div>
 
