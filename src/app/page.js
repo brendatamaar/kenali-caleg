@@ -80,15 +80,15 @@ export default function Home() {
           <div className="flex flex-wrap -mx-1 mt-20 lg:-mx-4">
             {calegs.map((caleg, idx) => (
               <div
-                className="my-2 px-2 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/2 hover:bg-gray-100"
+                className="my-2 px-2 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 hover:bg-gray-100"
                 key={idx}
               >
-                <div className="flex flex-col items-center bg-white rounded-lg shadow md:flex-row md:max-w-xl">
+                <div className="flex flex-col items-center bg-white rounded-lg shadow md:max-w-xl">
                   <Image
                     width={100}
                     height={100}
                     alt="Placeholder"
-                    className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+                    className="object-cover md:mt-4 w-full h-96 md:h-auto md:w-48"
                     src={caleg.pasFoto}
                   />
                   <div className="w-full max-w-sm p-4 bg-white sm:p-6">
@@ -118,8 +118,8 @@ export default function Home() {
                     <ul className="my-4 space-y-3">
                       <li>
                         <div className="inline-flex items-center w-full p-3 rounded-lg text-sm font-medium border border-gray-500 text-black">
-                          <span className="flex-1 whitespace-nowrap">Usia</span>
-                          <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
+                          <span className="flex-1 whitespace-nowrap me-2">Usia</span>
+                          <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">
                             {caleg.usia === "" || caleg.usia === null
                               ? "Tidak Menyebutkan"
                               : caleg.usia + " Tahun"}
@@ -128,20 +128,20 @@ export default function Home() {
                       </li>
                       <li>
                         <div className="inline-flex items-center w-full p-3 rounded-lg text-sm font-medium border border-gray-500 text-black">
-                          <span className="flex-1 whitespace-nowrap">
+                          <span className="flex-1 whitespace-nowrap me-2 ">
                             Jenis Kelamin
                           </span>
-                          <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
+                          <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">
                             {caleg.jenisKelamin.toUpperCase()}
                           </span>
                         </div>
                       </li>
                       <li>
                         <div className="inline-flex items-center w-full p-3 rounded-lg text-sm font-medium border border-gray-500 text-black">
-                          <span className="flex-1 whitespace-nowrap">
+                          <span className="flex-1 whitespace-nowrap me-2 ">
                             Status Hukum
                           </span>
-                          <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
+                          <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">
                             {caleg.statusHukum === "" ||
                             caleg.statusHukum === null
                               ? "Tidak Ada Data"
@@ -151,10 +151,10 @@ export default function Home() {
                       </li>
                       <li>
                         <div className="inline-flex items-center w-full p-3 rounded-lg text-sm font-medium border border-gray-500 text-black">
-                          <span className="flex-1 whitespace-nowrap">
+                          <span className="flex-1 whitespace-nowrap me-2 ">
                             Status Disabilitas
                           </span>
-                          <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
+                          <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">
                             {caleg.statusDisabilitas === "" ||
                             caleg.statusDisabilitas === null
                               ? "Tidak Ada Data"
