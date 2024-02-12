@@ -127,7 +127,7 @@ export default function Home() {
                         className="w-36 h-64 lg:w-24 lg:h-32 rounded-lg object-cover mx-auto mb-2"
                         src={item.pasFoto}
                       />
-                      <div className="flex-col gap-2">
+                      <div className="flex-col gap-4 lg:px-4">
                         <h3 className="text-sm font-medium text-gray-800 text-wrap">
                           {item.nama}
                         </h3>
