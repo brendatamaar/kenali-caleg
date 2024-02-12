@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 
 function Page({ params }) {
   const [calegs, setCalegs] = useState([]);
@@ -31,9 +32,24 @@ function Page({ params }) {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-6 bg-gray-50">
+    <main className="flex min-h-screen flex-col items-center justify-between bg-gray-50">
+      <header className="w-full text-white text-center">
+        <nav className="px-4 bg-white shadow-md border-slate-500 dark:bg-[#0c1015] transition duration-700 ease-out">
+          <div className="flex justify-between p-2">
+            <div className="text-lg leading-[3rem] tracking-tight font-bold text-black dark:text-white">
+              <Link href="/">KenaliCaleg</Link>
+            </div>
+            <div className="flex items-center space-x-4 text-sm text-white font-semibold tracking-tight">
+              <Link href="/about">Tentang</Link>
+            </div>
+          </div>
+        </nav>
+      </header>
       {calegs.map((caleg, idx) => (
-        <div className="max-w-lg mx-4 mb-10 w-full" key={idx}>
+        <div
+          className="max-w-lg px-6 max-h-full mb-12 lg:mb-14 h-full w-full"
+          key={idx}
+        >
           <button
             onClick={() => router.push(`/`)}
             className="text-white w-32 mt-4 bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
