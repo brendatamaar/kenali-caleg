@@ -167,7 +167,7 @@ export default function Home() {
                         </div>
                         <div className="text-gray-600 text-sm mt-2">
                           {item.statusHukum === "" ||
-                          item.statusHukum === null ? (
+                            item.statusHukum === null ? (
                             ""
                           ) : (
                             <span className="bg-gray-100 w-full text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">
@@ -176,7 +176,7 @@ export default function Home() {
                           )}
                         </div>
                         {item.statusDisabilitas === "" ||
-                        item.statusDisabilitas === null ? (
+                          item.statusDisabilitas === null ? (
                           ""
                         ) : (
                           <span className="bg-gray-100 w-full text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">
@@ -198,7 +198,13 @@ export default function Home() {
             ))}
           </div>
         ) : (
-          <div className="mt-16">Data kosong. Silahkan pilih dapil anda.</div>
+          <div className="mt-16">
+            <center>
+              <img className="w-2/5 h-2/5" src="empty.svg"></img>
+              <h1 className="font-mono font-semibold -mt-6">Data calon legislatif kosong👀</h1>
+              <p className="font-mono font-light">Silahkan pilih daerah anda di kolom pencarian di atas✨</p>
+            </center>
+          </div>
         )}
       </div>
 
